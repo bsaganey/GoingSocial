@@ -1,0 +1,1 @@
+All of the code and documentation in the Django312 cookiecutter template has been dedicated to the public domain by the author. Anyone is free to copy, modify, publish, use, compile, sell, or distribute the Django312 cookiecutter template for any purpose, commercial or non-commercial, and by any means.
