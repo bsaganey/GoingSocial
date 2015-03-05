@@ -16,6 +16,9 @@ def splash(request):
 	
 def about(request):
 	return render(request, 'main/about.html',{})
+	
+def SignUp(request):
+	return render(request,'main/SignUp.html',{})
 
 
 
