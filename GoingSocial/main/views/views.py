@@ -11,5 +11,8 @@ from django.db import models
 def home(request):
     return render(request, 'main/home.html', {})
 
+def splash(request):
+	return render(request, 'main/splash.html',{})
+
 
 
