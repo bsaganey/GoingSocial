@@ -2,20 +2,13 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.models import User
 from main.models import MyUser
-from main.forms import UserForm, MyUserForm
-=======
-from main.models import User
-from main.forms import UserForm
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
->>>>>>> 63f77db2734457c68d83ba5c72fc8fe4b14dbfa6
+from main.forms import UserForm, MyUserForm, SignInForm
 
 def home(request):
-    #request.session['name'] = 'Ludwik'
+    request.session['name'] = 'Ludwik'
     return render(request, 'home.html', {})
 
 
@@ -23,14 +16,13 @@ def sign_in(request):
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"]
+            username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(email = email, password = password)
+            user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect('/')
             else:
-                messages.error(request, 'Incorrect email or password')
                 return HttpResponseRedirect('/sign_in/')
     elif request.method == 'GET':
         form = SignInForm()
@@ -46,6 +38,7 @@ def user_logout(request):
 
 def thanks(request):
 	return render(request, 'thanks.html',{})
+
 
 def sign_up(request):
     if request.method == 'POST':
