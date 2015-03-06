@@ -4,8 +4,7 @@ from main.models import User
 date_widget =  {
             'birth': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
         }
-
-class userForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password', 'name', 'hometown', 'city', 'birth', 'zipcode']
