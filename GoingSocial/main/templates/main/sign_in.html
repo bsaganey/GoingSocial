@@ -4,11 +4,11 @@
 {% block titleBlock %} Sign-Up {% endblock %}
 {% block body %}
 
-<div class="container" style="width:400px;">
+<div class="container-fluid" style="width:400px">
 	<h2 class="page-header">Sign In</h2>
 <form action="/sign_in/" method="post" class="form">
     {% csrf_token %}
-    {% bootstrap_form form %}
+    {% bootstrap_form sign_in_form %}
     {% buttons %}
         <button type="submit" class="btn btn-primary btn-lg" >
             Sign In
