@@ -8,15 +8,15 @@ from main.forms import UserForm
 def home(request):
     return render(request, 'home.html', {})
 
-def signup_form(request):
+def sign_up(request):
     if request.method == 'POST':
-        form = UserlForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/moo')
     else:
         form = UserForm()
-    return render(request, 'main/signup.html', {'form': form})
+    return render(request, 'main/sign_up.html', {'form': form})
 
 
 def splash(request):
@@ -27,6 +27,3 @@ def about(request):
 
 def home(request):
     return render(request, 'main/home.html',{})
-	
-def sign_up(request):
-	return render(request,'main/sign_up.html',{})
