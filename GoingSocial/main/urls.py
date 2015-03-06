@@ -12,5 +12,5 @@ urlpatterns = patterns('',
     url(r'^about', about, name='about'),
     url(r'^sign_up', sign_up, name='sign_up'),
     #url(r'^User/(?P<thanks_id>\d+)/$', User, name='user'),
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
