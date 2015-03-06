@@ -7,11 +7,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'main.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^$', splash),
-    url(r'^home', home),
-    url(r'^about', about),
-    url(r'^SignUp', SignUp),
-    
-
+    url(r'^$', splash, name='splash'),
+    url(r'^home', home, name='home'),
+    url(r'^about', about, name='about'),
+    url(r'^SignUp', SignUp, name='home'),
+    url(r'^User/(?P<thanks_id>\d+)/$', User, name='user'),
     url(r'^admin/', include(admin.site.urls)),
 )
