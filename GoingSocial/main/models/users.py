@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 class User(models.Model):
+    username = models.CharField(max_length = 75)
     email = models.EmailField(max_length = 75)
     password = models.CharField(max_length = 75)
     name = models.CharField(max_length = 200)
