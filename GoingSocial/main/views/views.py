@@ -8,7 +8,8 @@ from main.models import MyUser
 from main.forms import UserForm, MyUserForm, SignInForm
 
 def home(request):
-    request.session['name'] = 'Ludwik'
+    #if request.user.is_authenticated():
+
     return render(request, 'home.html', {})
 
 
@@ -21,7 +22,7 @@ def sign_in(request):
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/home/')
             else:
                 return HttpResponseRedirect('/sign_in/')
     elif request.method == 'GET':
@@ -31,9 +32,9 @@ def sign_in(request):
     return render(request, "sign_in.html", {"form": form})
 
 
-def user_logout(request):
+def sign_out(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/home/')
 
 
 def thanks(request):
@@ -55,8 +56,10 @@ def sign_up(request):
         myuser_form = MyUserForm()
     return render(request, 'main/sign_up.html', {'user_form': user_form, 'myuser_form': myuser_form})
 
+
 def splash(request):
 	return render(request, 'main/splash.html',{})
-	
+
+
 def about(request):
     return render(request, 'main/about.html', {'moo': request.session['name']})

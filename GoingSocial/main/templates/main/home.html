@@ -12,12 +12,26 @@
 		
 			<p style="text-align: center;">Blog Features:</p>
 			<ul>
+                {% if user.is_authenticated %}
+                    <p>Welcome {{ user.username }} !</p>
+                    <a href = 'sign_out'> sign out? </a>
+                {% else %}
+                    <li>
+                        <a href="/user/{{user.pk}}">{{user.username}}</a>
+                    </li>
+                    <li>
+                        <a href="/user/edit/{{ user.pk }}">My Account</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'main.views.login.user_logout' %}">Logout</a>
+                    </li>
+                {% endif %}
   				Personalized Themes!<br>
  				Comment <br>
   				Morbi leo risus<br>
   				Porta ac consectetur ac<br>
   				Vestibulum at eros<br>
-                <br> {{ username }}
+                <br> 
 			</ul>
 		</div>
 	</div>
