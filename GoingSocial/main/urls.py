@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^about/$', about, name='about'),
     url(r'^sign_up/$', sign_up, name='sign_up'),
     url(r'^thanks/$', thanks, name='thanks'),
-    url(r'^blog/(?P<id>\d+)/$', blog, name='blog'),
+    url(r'^blog/$', blog, name='blog'),
     url(r'^profile/(?P<id>\d+)/$', profile, name='profile'),
     url(r'^admin/$', include(admin.site.urls)),
 )

@@ -56,11 +56,11 @@ def sign_up(request):
 
 
 def splash(request):
-	return render(request, 'main/splash.html',{})
+	return render(request, 'main/splash.html', {})
 
 
 def home(request):
-    return render(request, 'main/home.html',{})
+    return render(request, 'main/home.html', {})
 
 
 def about(request):
@@ -74,9 +74,9 @@ def profile(request, id):
     else:
         return HttpResponseRedirect('/splash/')
 
-def blog(request, id):
+def blog(request):
     if request.user.is_authenticated():
-        current_user=request.user
-        return render(request, "blog.html", {'myuser': MyUser.objects.get(user=id)})
+        return render(request, "blog.html", 
+            {'myuser': MyUser.objects.get(user=request.user.id)})
     else:
         return HttpResponseRedirect('/splash/')
