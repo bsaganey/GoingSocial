@@ -4,13 +4,13 @@
 {% block titleBlock %} Sign-Up {% endblock %}
 {% block body %}
 
-<div class="container">
-	Signup
+<div class="container" style="width:400px;">
+	<h2 class="page-header">Signup to start blogging</h2>
 <form action="/sign_up/" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary btn-lg" >
             Submit
         </button>
     {% endbuttons %}
