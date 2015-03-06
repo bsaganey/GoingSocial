@@ -1,4 +1,4 @@
-from django.db import forms
+from django import forms
 from main.models import User
 
 date_widget =  {

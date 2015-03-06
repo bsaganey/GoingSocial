@@ -1,13 +1,9 @@
 from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render
-
-from django import forms
 from django.http import HttpResponseRedirect
-from django.db import models
-
-#<<<<<<< Updated upstream
-#=======
+from main.models import User
+from main.forms import UserForm
 
 def home(request):
     return render(request, 'home.html', {})
@@ -22,7 +18,7 @@ def signup_form(request):
         form = UserForm()
     return render(request, 'main/signup.html', {'form': form})
 
-#>>>>>>> Stashed changes
+
 def splash(request):
 	return render(request, 'main/splash.html',{})
 	
