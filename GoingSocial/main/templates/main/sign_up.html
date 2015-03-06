@@ -3,8 +3,9 @@
 {% block nav-home %}class="active"{% endblock %}
 {% block titleBlock %} Sign-Up {% endblock %}
 {% block body %}
-SignUp
-<div>
+
+<div class="container">
+	Signup
 <form action="/sign_up/" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
