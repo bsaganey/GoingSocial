@@ -47,7 +47,7 @@ def sign_up(request):
             new_myuser = myuser_form.save(commit=False)
             new_myuser.user = new_user
             new_myuser.save()
-            return HttpResponseRedirect('/thanks')
+            return HttpResponseRedirect('/sign_in')
     else:
         user_form = UserForm()
         myuser_form = MyUserForm()
