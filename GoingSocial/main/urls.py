@@ -8,7 +8,15 @@ urlpatterns = patterns('',
     # url(r'^$', 'main.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$', splash, name='splash'),
+#<<<<<<< Updated upstream
     url(r'^home', home, name='home'),
+#=======
+#<<<<<<< Updated upstream
+    #url(r'^home', home, name='home'),
+#=======
+    url(r'^home', home, name= 'home'),
+#>>>>>>> Stashed changes
+#>>>>>>> Stashed changes
     url(r'^about', about, name='about'),
     url(r'^SignUp', sign_up, name='signup'),
     #url(r'^User/(?P<thanks_id>\d+)/$', User, name='user'),

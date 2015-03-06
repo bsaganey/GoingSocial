@@ -6,6 +6,23 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.db import models
 
+#<<<<<<< Updated upstream
+#=======
+
+def home(request):
+    return render(request, 'home.html', {})
+
+def signup_form(request):
+    if request.method == 'POST':
+        form = UserlForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/moo')
+    else:
+        form = UserForm()
+    return render(request, 'main/signup.html', {'form': form})
+
+#>>>>>>> Stashed changes
 def splash(request):
 	return render(request, 'main/splash.html',{})
 	
