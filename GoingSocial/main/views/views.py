@@ -7,13 +7,16 @@ from main.forms import UserForm
 
 def home(request):
     return render(request, 'home.html', {})
+    
+def thanks(request):
+	return render(request, 'thanks.html',{})
 
 def sign_up(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/moo')
+            return HttpResponseRedirect('/thanks')
     else:
         form = UserForm()
     return render(request, 'main/sign_up.html', {'form': form})
