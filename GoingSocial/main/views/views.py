@@ -10,7 +10,10 @@ def splash(request):
 	return render(request, 'main/splash.html',{})
 	
 def about(request):
-	return render(request, 'main/about.html',{})
+    return render(request, 'main/about.html',{})
+
+def home(request):
+    return render(request, 'main/home.html',{})
 	
 def sign_up(request):
-	return render(request,'main/SignUp.html',{})
+	return render(request,'main/sign_up.html',{})
