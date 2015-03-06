@@ -26,7 +26,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_PROFILE_MODULE = 'main.MyUser'
 # Application definition
 
 INSTALLED_APPS = [

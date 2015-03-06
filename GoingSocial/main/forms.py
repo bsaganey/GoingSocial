@@ -1,10 +1,20 @@
 from django import forms
-from main.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from main.models import MyUser
 
 date_widget =  {
             'birth': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
         }
-class UserForm(forms.ModelForm):
+
+
+class UserForm(UserCreationForm):
+    model = User
+    fields = ['username', 'password']
+
+
+class MyUserForm(forms.ModelForm):
+
     class Meta:
-        model = User
-        fields = ['email', 'password', 'name', 'hometown', 'city', 'birth', 'zipcode']
+        model = MyUser
+        fields = ['email', 'name', 'hometown', 'city', 'birth', 'zipcode']
