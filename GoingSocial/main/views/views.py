@@ -74,8 +74,9 @@ def profile(request, id):
     else:
         return HttpResponseRedirect('/splash/')
 
-def blog(request):
+def blog(request, id):
     if request.user.is_authenticated():
-        return render(request, "blog.html", {'myuser': MyUser.objects.get(user=request.user.id)})
+        current_user=request.user
+        return render(request, "blog.html", {'myuser': MyUser.objects.get(user=id)})
     else:
         return HttpResponseRedirect('/splash/')

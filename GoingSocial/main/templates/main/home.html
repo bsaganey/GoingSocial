@@ -9,16 +9,18 @@
 		<h2 style="text-align: center; margin-top: 60px; font-family: verdana">Create your own Blog for FREE.</h2>
 		<div style="text-align: center;">
 			<button class="btn btn-success btn-lg" style="text-align: center; font-family: verdana">Create Blog!</button>
-		
+		<h2>
 			<p style="text-align: center;">Blog Features:</p>
           Personalized Themes!<br>
           Comment <br>
               {% if user.is_authenticated %}
-                  <p>Welcome {{ user.username }} !</p>
+                  <p>Welcome {{ user.username }} !</p> <br>
+                  <a href = '/profile/{{ user.id }}'> Show off your selfies? </a>
                   <a href = '/sign_out/'> sign out? </a>
               {% else %}
                   <p>Welcome Guest, try making an account! :D <a href = '/sign_up/'> sign up? </a> <a href = '/sign_in/'> sign in? </a></p>
               {% endif %}
+          </h2>
 		</div>
 	</div>
 {% endblock %}
