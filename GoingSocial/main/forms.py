@@ -19,6 +19,7 @@ class MyUserForm(forms.ModelForm):
         model = MyUser
         fields = ['email', 'name', 'hometown', 'city', 'birth', 'zipcode']
 
+
 class SignInForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
     password = forms.CharField(label='Password', max_length=30, widget=forms.PasswordInput)

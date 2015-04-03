@@ -4,8 +4,8 @@ from django.core.validators import RegexValidator
 
 
 class MyUser(models.Model):
-    user = models.OneToOneField(User) 
-    email = models.EmailField(max_length = 75)
+    user = models.OneToOneField(User)
+    email = models.EmailField(max_length = 75) #deleting this :x
     name = models.CharField(max_length = 200)
     hometown = models.CharField(max_length = 75)
     city = models.CharField(max_length = 75)

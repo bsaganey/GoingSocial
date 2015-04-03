@@ -24,7 +24,7 @@ def sign_in(request):
         sign_in_form = SignInForm()
     else:
         return HttpResponseRedirect('/sign_in/')
-    return render(request, "sign_in.html", {"sign_in_form": sign_in_form})
+    return render(request, "sign_in.html", {'sign_in_form': sign_in_form})
 
 
 def sign_out(request):
@@ -73,6 +73,7 @@ def profile(request, id):
             {'user': User.objects.get(id=id), 'myuser': MyUser.objects.get(user=id)})
     else:
         return HttpResponseRedirect('/splash/')
+
 
 def blog(request):
     if request.user.is_authenticated():
