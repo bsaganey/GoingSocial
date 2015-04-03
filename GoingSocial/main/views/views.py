@@ -75,6 +75,10 @@ def home(request):
     return render(request, 'main/home.html', {})
 
 
+def dashboard(request):
+    return render(request, 'main/dashboard.html', {})
+
+
 def about(request):
     return render(request, 'main/about.html', {})
 

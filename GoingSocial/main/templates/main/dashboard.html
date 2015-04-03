@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title> Hello World </title>
+        {% verbatim %}
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function() {
+            function loadData() {
+              $.getJSON("/posts/?format=json", function(json) {
+              var template = $('#template').html();
+              Mustache.parse(template);
+              var rendered = Mustache.render(template, {array: json});
+              $('#target').html(rendered);
+            });
+              setTimeout(loadData, 5000);
+            }
+            loadData();
+          })
+        </script>
+        <script id = "template" type="x-tmpl-mustache">
+          {{ #array }}
+            <p>id: {{ id }} </p>
+          {{ /array }}
+        </script>
+        {% endverbatim %}
+    </head>
+    <body>
+        <div id="target">Loading...</div>
+    </body>
+</html>
