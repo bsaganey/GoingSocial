@@ -4,8 +4,20 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.models import User
-from main.models import MyUser
+from main.models import MyUser, Post
 from main.forms import UserForm, MyUserForm, SignInForm
+from main.serializers import PostSerializer
+from rest_framework import generics
+
+
+class PostList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 
 def sign_in(request):
