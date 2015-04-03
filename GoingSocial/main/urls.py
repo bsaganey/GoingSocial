@@ -1,13 +1,11 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from views.views import splash, home, dashboard, about, sign_up, thanks, sign_in, sign_out, profile, profiles, blog, PostList, PostDetail
+from views.views import splash, home, dashboard, about, sign_up, thanks, sign_in, sign_out, profile, profiles, blog, PostList, PostDetail, moo
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'main.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^moo/$', moo, name='moo'),
     url(r'^$', splash, name='splash'),
     url(r'^home/$', home, name= 'home'),
     url(r'^blog/$', dashboard, name= 'dashboard'),

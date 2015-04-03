@@ -115,3 +115,7 @@ def blog(request):
             {'myuser': MyUser.objects.get(user=request.user.id)})
     else:
         return HttpResponseRedirect('/splash/')
+
+
+def moo(request):
+    return render(request, 'main/moo.html', {})
