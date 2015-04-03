@@ -18,7 +18,7 @@ class MyUserForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ['email', 'name', 'hometown', 'city', 'birth', 'zipcode']
+        fields = ['email', 'name', 'city', 'state', 'birth', 'zipcode']
 
 
 class PostForm(forms.ModelForm):
@@ -29,5 +29,10 @@ class PostForm(forms.ModelForm):
 
 
 class SignInForm(forms.Form):
+    username = forms.CharField(label='Username', max_length=30)
+    password = forms.CharField(label='Password', max_length=30, widget=forms.PasswordInput)
+
+
+class AddFriendForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
     password = forms.CharField(label='Password', max_length=30, widget=forms.PasswordInput)

@@ -3,18 +3,18 @@
 {% block nav-home %}class="active"{% endblock %}
 {% block titleBlock %} Dashboard {% endblock %}
 {% block body %}
-<div class="container" style="width:400px;">
-    <form action="/dashboard/" method="post" class="form" id="post_form">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <input type="hidden" id="user_id" name="user_id" value="{{ user.id }}">
-        {% buttons %}
-        <button type="button" class="btn btn-primary btn-lg" onclick="postJson()">
-            Submit
-        </button>
-        {% endbuttons %}
-    </form>
-</div>
+<h3> Create a Blog for the world to see! </h3>
+<form action="/dashboard/" method="post" class="form" id="post_form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="hidden" id="user_id" name="user_id" value="{{ user.id }}">
+    <input type="hidden" id="username" name="username" value="{{ myuser.name }}">
+    {% buttons %}
+    <button type="button" class="btn btn-primary btn-lg" onclick="postJson()">
+        Submit
+    </button>
+    {% endbuttons %}
+</form>
 {% verbatim %}
 <script type="text/javascript">
     // using jQuery
@@ -66,10 +66,11 @@
                    type: 'POST',
                    url: "/posts/",
                    data: JSON.stringify({
-                                            "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').prop('value'),
-                                            "user": $('input[name="user_id"]').prop('value'),
-                                            "title": $('input[name="title"]').prop('value'),
-                                            "body": $('input[name="body"]').prop('value')
+                                            "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val(),
+                                            "user": $('input[name="user_id"]').val(),
+                                            "username": $('input[name="username"]').val(),
+                                            "title": $('input[name="title"]').val(),
+                                            "body": $('textarea[name="body"]').val()
                                         }),
                    crossDomain: false,
                    contentType: "application/json; charset=utf-8",
@@ -83,7 +84,16 @@
         $.getJSON("/posts/?format=json", function (json) {
             var template = $('#template').html();
             Mustache.parse(template);
-            var rendered = Mustache.render(template, {array: json});
+            var data = {
+                array: json, 
+                "dateString": function () {
+                    return function (text, render) {
+                      return new Date(render(text)).toString();
+                    }
+                }
+            };
+            var rendered = Mustache.render(template, data);
+                
             $('#target').html(rendered);
         });
         setTimeout(loadData, 5000);
@@ -96,9 +106,10 @@
 </script>
 <script id="template" type="x-tmpl-mustache">
   {{ #array }}
-    <p>id: {{ id }} | user_id: {{ user }} | {{ title }} | {{ body }}</p>
+    <h3>Name: {{ username }}</h3>
+    <h4>{{ title }} | {{#dateString}}{{ created }}{{/ dateString }}</h4>
+    {{ body }}<br>
   {{ /array }}
-
 </script>
 {% endverbatim %}
 <div id="target">Loading...</div>

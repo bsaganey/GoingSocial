@@ -10,20 +10,18 @@
 
             <h2>User Info:</h2>
 
-            <p> Username: {{ user.username }} </p>
-
+            <p> Username: {{ profile_user.username }} </p>
+            <p> Name: {{ myuser.name }} </p>
             <p> Email: {{ myuser.email }} </p>
-
-            <p> Enc. Password: {{ user.password }} </p>
-
-            <p> Name: {{ myuser.name }}</p>
-
-            <p> Location: {{ myuser.hometown }}, {{ myuser.city }}, (state goes here), {{
-                myuser.zipcode }} </p>
-
+            <p> Location: {{ myuser.city }}, {{ myuser.state }}, {{ myuser.zipcode }} </p>
             <p> Birthday: {{ myuser.birth }} </p>
             <br>
-
+            {% if logged_in_user != myuser.id %}
+            <button type="button" class="btn btn-primary" onclick="postJson()">
+                add friend
+            </button>
+            {% endif %}
+            <br><br>
             <p>
                 <a class="btn btn-primary" href="/blog/"> Make an b-e-a-u-tiful blog? </a> <a
                     class="btn btn-primary" href="/home/"> Home </a> <a class="btn btn-primary"

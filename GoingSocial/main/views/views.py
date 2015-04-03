@@ -80,15 +80,10 @@ def home(request):
 
 def dashboard(request):
     if request.user.is_authenticated():
-        if request.method == 'POST':
-            form = PostForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect('/moo/')
-        else:
-            form = PostForm()
+        form = PostForm()
+
         return render(request, 'main/dashboard.html', 
-            {'form': form})
+            {'form': form, 'myuser': MyUser.objects.get(user=request.user)})
     else:
         return HttpResponseRedirect('/home/')
 
@@ -100,7 +95,9 @@ def about(request):
 def profile(request, id):
     if request.user.is_authenticated():
         return render(request, "profile.html", 
-            {'user': User.objects.get(id=id), 'myuser': MyUser.objects.get(user=id)})
+            {'logged_in_user': request.user, 
+            'profile_user': User.objects.get(id=id), 
+            'myuser': MyUser.objects.get(user=id)})
     else:
         return HttpResponseRedirect('/splash/')
 

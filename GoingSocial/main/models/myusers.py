@@ -5,9 +5,9 @@ from django.core.validators import RegexValidator
 
 class MyUser(models.Model):
     user = models.OneToOneField(User)
-    email = models.EmailField(max_length = 75) #deleting this :x
+    email = models.EmailField(max_length = 75)
     name = models.CharField(max_length = 200)
-    hometown = models.CharField(max_length = 75)
+    state = models.CharField(max_length = 75)
     city = models.CharField(max_length = 75)
     birth = models.DateField()
     zipcode_validatior = RegexValidator(regex = '^\d{5}(?:[-\s]\d{4})?$')
