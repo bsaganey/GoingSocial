@@ -81,7 +81,6 @@ def home(request):
 def dashboard(request):
     if request.user.is_authenticated():
         form = PostForm()
-
         return render(request, 'main/dashboard.html', 
             {'form': form, 'myuser': MyUser.objects.get(user=request.user)})
     else:
@@ -95,9 +94,17 @@ def about(request):
 def profile(request, id):
     if request.user.is_authenticated():
         return render(request, "profile.html", 
-            {'logged_in_user': request.user, 
+            {'logged_in_user': request.user.id, 
             'profile_user': User.objects.get(id=id), 
             'myuser': MyUser.objects.get(user=id)})
+    else:
+        return HttpResponseRedirect('/splash/')
+
+
+def profiles(request):
+    if request.user.is_authenticated():
+        return render(request, "profiles.html", 
+            {'users': MyUser.objects.all})
     else:
         return HttpResponseRedirect('/splash/')
 

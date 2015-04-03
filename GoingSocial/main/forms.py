@@ -31,10 +31,3 @@ class PostForm(forms.ModelForm):
 class SignInForm(forms.Form):
     username = forms.CharField(label='Username', max_length=30)
     password = forms.CharField(label='Password', max_length=30, widget=forms.PasswordInput)
-
-
-class FriendForm(forms.ModelForm):
-
-    class Meta:
-        model = Friend
-        fields = ['user', 'other']

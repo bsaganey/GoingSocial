@@ -17,14 +17,12 @@
             <p> Birthday: {{ myuser.birth }} </p>
             <br>
             {% if logged_in_user != myuser.id %}
-            <button type="button" class="btn btn-primary" onclick="postJson()">
-                add friend
-            </button>
+                <a class="btn btn-primary" href=""> Add Friend </a>
             {% endif %}
             <br><br>
             <p>
                 <a class="btn btn-primary" href="/blog/"> Make an b-e-a-u-tiful blog? </a> <a
-                    class="btn btn-primary" href="/home/"> Home </a> <a class="btn btn-primary"
+                    class="btn btn-primary" href="/profiles/"> View Profiles </a> <a class="btn btn-primary"
                                                                         href="/sign_out/"> Sign out </a></h2>
             </p>
         </div>

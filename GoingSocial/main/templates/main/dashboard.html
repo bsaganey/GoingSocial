@@ -3,6 +3,9 @@
 {% block nav-home %}class="active"{% endblock %}
 {% block titleBlock %} Dashboard {% endblock %}
 {% block body %}
+<div class="container-fluid"
+     style="background-image: url(../static/img/clouds.png); width: 100%; height: 750px; margin-top: -31px; ">
+<br><br><br>
 <h3> Create a Blog for the world to see! </h3>
 <form action="/dashboard/" method="post" class="form" id="post_form">
     {% csrf_token %}
@@ -15,6 +18,9 @@
     </button>
     {% endbuttons %}
 </form>
+
+</div>
+</div>
 {% verbatim %}
 <script type="text/javascript">
     // using jQuery
@@ -76,7 +82,9 @@
                    contentType: "application/json; charset=utf-8",
                    dataType: "json",
                    success: function () {
-                       loadData();
+                        $('input[name="title"]').val("");
+                        $('textarea[name="body"]').val("");
+                        loadData();
                    }
                });
     }
@@ -105,12 +113,17 @@
     })
 </script>
 <script id="template" type="x-tmpl-mustache">
+    <h2 align="center">POSTS</h2>
   {{ #array }}
     <h3>Name: {{ username }}</h3>
-    <h4>{{ title }} | {{#dateString}}{{ created }}{{/ dateString }}</h4>
+    <strong><b>{{ title }}</b></strong> | {{#dateString}}{{ created }}{{/ dateString }}<br>
     {{ body }}<br>
   {{ /array }}
 </script>
 {% endverbatim %}
-<div id="target">Loading...</div>
+    <div id="target" class="panel panel-primary" style="margin-top: 60px; width: 50%; margin-left: auto; margin-right: auto;">
+        <h2 align="center">POSTS</h2>
+        <p> Loading...</p>
+    </div>
+</div>
 {% endblock %}
