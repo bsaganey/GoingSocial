@@ -16,6 +16,7 @@
 	<title>{% block titleBlock %} {% endblock %}</title>
   {% bootstrap_css %}
   <link href="{% static 'css/custom.css' %}" rel="stylesheet" media="screen">
+	<%#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>%>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" />
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js" />
   {% bootstrap_javascript %}
@@ -58,7 +59,31 @@
           <a class="navbar-brand" href="/home">The Blog</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
           
+          <ul class="nav navbar-nav">
+						<li>
+							<a href="\home">Home</a>
+						</li>
+						<li>
+							<a href="\about">About</a>
+						</li>
+						<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Media <i class="fa fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                  	<li><a href="https://github.com/bsaganey/GoingSocial"><span class="fa fa-github"> Github</span></a></li>
+    				    </ul>
+					</li>
+					</form>
+				{% if user.is_authenticated %}
+				<li>
+					<p style="color:grey; margin-top: 9px;">Welcome, {{ user.username }}. Thanks for logging in.</p>
+				</li>
+				{% else %}
+				<li style="margin-top: 9px">
+					<p> <a class="btn btn-primary" href = '/sign_up/'> Sign Up </a> <a class="btn" href = '/sign_in/'> Sign In </a></p>
+				</li>
+				{% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
