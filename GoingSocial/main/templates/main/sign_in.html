@@ -5,16 +5,17 @@
 {% block body %}
 
 <div class="container-fluid" style="width:400px">
-<h2 class="page-header">Sign In</h2>
-<form action="/sign_in/" method="post" class="form">
-    {% csrf_token %}
-    <div style="color:red; font-size:16pt;">{{ error }}</div>
-    {% bootstrap_form sign_in_form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary btn-lg" >
+    <h2 class="page-header">Sign In</h2>
+
+    <form action="/sign_in/" method="post" class="form">
+        {% csrf_token %}
+        <div style="color:red; font-size:16pt;">{{ error }}</div>
+        {% bootstrap_form sign_in_form %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary btn-lg">
             Sign In
         </button>
-    {% endbuttons %}
-</form>
+        {% endbuttons %}
+    </form>
 </div>
 {% endblock %}

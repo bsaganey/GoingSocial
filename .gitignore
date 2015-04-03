@@ -217,3 +217,5 @@ pip-log.txt
 
 #DBsqlite
 db.sqlite3
+.idea/workspace.xml
+*.xml
