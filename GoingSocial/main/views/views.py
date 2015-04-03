@@ -21,6 +21,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 def sign_in(request):
+    error = ""
     if request.method == 'POST':
         sign_in_form = SignInForm(request.POST)
         if sign_in_form.is_valid():
@@ -31,12 +32,14 @@ def sign_in(request):
                 login(request, user)
                 return HttpResponseRedirect('/home/')
             else:
-                return HttpResponseRedirect('/sign_in/')
+                error = "Invalid username/password."
+                form = SignInForm(initial={'username': request.POST.get('username')})
+               # return HttpResponseRedirect('/sign_in/')
     elif request.method == 'GET':
         sign_in_form = SignInForm()
     else:
         return HttpResponseRedirect('/sign_in/')
-    return render(request, "sign_in.html", {'sign_in_form': sign_in_form})
+    return render(request, "sign_in.html", {'sign_in_form': sign_in_form, 'error': error})
 
 
 def sign_out(request):
