@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from main.models import MyUser
+from main.models import MyUser, Post
+
 
 date_widget =  {
             'birth': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
@@ -18,6 +19,13 @@ class MyUserForm(forms.ModelForm):
     class Meta:
         model = MyUser
         fields = ['email', 'name', 'hometown', 'city', 'birth', 'zipcode']
+
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ['title', 'body']
 
 
 class SignInForm(forms.Form):
