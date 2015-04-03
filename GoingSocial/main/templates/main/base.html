@@ -73,17 +73,16 @@
                 <ul class="dropdown-menu">
                   	<li><a href="https://github.com/bsaganey/GoingSocial"><span class="fa fa-github"> Github</span></a></li>
     				    </ul>
-            </li>
-          <li> <a href="\sign_up">Sign-up</a></li>
-					</ul>
-            <div class="form-group">
-              <input type="text" placeholder="Username" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+					</li>
+				{% if user.is_authenticated %}
+				<li>
+					<p style="color:grey; margin-top: 9px;">Welcome, {{ user.username }}. Thanks for logging in.</p>
+				</li>
+				{% else %}
+				<li style="margin-top: 9px">
+					<p> <a class="btn btn-primary" href = '/sign_up/'> Sign Up </a> <a class="btn" href = '/sign_in/'> Sign In </a></p>
+				</li>
+				{% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
