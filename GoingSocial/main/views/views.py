@@ -5,10 +5,9 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.models import User
 from main.models import MyUser, Post
-from main.forms import UserForm, MyUserForm, SignInForm
+from main.forms import UserForm, MyUserForm, SignInForm, PostForm
 from main.serializers import PostSerializer
 from rest_framework import generics
-from rest_framework.views import APIView
 
 
 class PostList(generics.ListCreateAPIView):
@@ -79,7 +78,6 @@ def home(request):
     return render(request, 'main/home.html', {})
 
 
-@api_view(['GET', 'POST'])
 def dashboard(request):
     if request.user.is_authenticated():
         if request.method == 'POST':
