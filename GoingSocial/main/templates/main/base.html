@@ -75,7 +75,9 @@
 						
 				
 				{% if user.is_authenticated %}
-				
+				<li> 
+            <a href="/profile/{{user.id}}">Profile</a>
+          </li>
 				<li>
 					<p style="color: #168db4; margin-top: 15px;">Welcome, {{ user.username }}. Thanks for logging in.</p>
 					
