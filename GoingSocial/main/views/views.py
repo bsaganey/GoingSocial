@@ -8,6 +8,7 @@ from main.models import MyUser, Post
 from main.forms import UserForm, MyUserForm, SignInForm
 from main.serializers import PostSerializer
 from rest_framework import generics
+from rest_framework.views import APIView
 
 
 class PostList(generics.ListCreateAPIView):
