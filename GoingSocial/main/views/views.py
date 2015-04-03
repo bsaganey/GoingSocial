@@ -96,7 +96,7 @@ def profile(request, id):
         return render(request, "profile.html", 
             {'logged_in_user': request.user.id, 
             'profile_user': User.objects.get(id=id), 
-            'myuser': MyUser.objects.get(user=id)})
+            'myuser': MyUser.objects.get(user=id), 'posts': Post.objects.all})
     else:
         return HttpResponseRedirect('/splash/')
 

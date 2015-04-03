@@ -27,9 +27,18 @@
             </p>
         </div>
     </div>
+    <div id="target" class="panel panel-primary" style="margin-top: 60px; width: 50%; margin-left: auto; margin-right: auto;">
+        <h2 align="center">YOUR POSTS</h2>
+            {% for p in posts %}
+                {% if p.user.id == profile_user.id %}
+                <div>
+                    <h4>{{ p.created }}</h4>
+                    <strong><b>{{ p.title }}</b></strong> | <br>
+                    {{ p.body }}<br>
+                </div>
+                {% endif %}
+            {% endfor %}
+    </div>
 </div>
-</div>
-</div>
-</div>
-{% endblock %}
 
+{% endblock %}
