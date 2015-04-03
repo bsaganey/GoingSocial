@@ -12,3 +12,7 @@ class MyUser(models.Model):
     birth = models.DateField()
     zipcode_validatior = RegexValidator(regex = '^\d{5}(?:[-\s]\d{4})?$')
     zipcode = models.CharField(validators = [zipcode_validatior], max_length = 5)
+
+class Friend(models.Model):
+    current = models.ForeignKey(MyUser, null=True, related_name='current_user')
+    other = models.ForeignKey(MyUser, null=True, related_name='other_user')

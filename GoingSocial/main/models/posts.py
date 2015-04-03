@@ -3,7 +3,9 @@ from main.models import MyUser
 from pygments.lexers import get_all_lexers
 from pygments.styles import get_all_styles
 
+
 LEXERS = [item for item in get_all_lexers() if item[1]]
+
 
 class Post(models.Model):
     user = models.ForeignKey(MyUser)
