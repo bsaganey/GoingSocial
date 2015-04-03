@@ -111,10 +111,10 @@
 </script>
 <script id="template" type="x-tmpl-mustache">
     <h2 align="center">POSTS</h2>
-  {{ #array }}
+  {{ #array }}<a href="/profile/{{ user }}" style="color: black; text-decoration: none;">
     <h3>Name: {{ username }}</h3>
     <strong><b>{{ title }}</b></strong> | {{#dateString}}{{ created }}{{/ dateString }}<br>
-    {{ body }}<br>
+    {{ body }}</a><br>
   {{ /array }}
 </script>
 {% endverbatim %}
