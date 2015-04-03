@@ -78,8 +78,20 @@ def home(request):
     return render(request, 'main/home.html', {})
 
 
+@api_view(['GET', 'POST'])
 def dashboard(request):
-    return render(request, 'main/dashboard.html', {})
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            form = PostForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect('/moo/')
+        else:
+            form = PostForm()
+        return render(request, 'main/dashboard.html', 
+            {'form': form})
+    else:
+        return HttpResponseRedirect('/home/')
 
 
 def about(request):
