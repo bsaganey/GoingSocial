@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from main.models import MyUser, Post
 
 
-date_widget =  {
-            'birth': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
-        }
+date_widget = {
+    'birth': forms.TextInput(attrs={'placeholder': 'MM/DD/YYYY'}),
+    }
 
 
 class UserForm(UserCreationForm):
@@ -15,14 +15,12 @@ class UserForm(UserCreationForm):
 
 
 class MyUserForm(forms.ModelForm):
-
     class Meta:
         model = MyUser
         fields = ['email', 'name', 'city', 'state', 'birth', 'zipcode']
 
 
 class PostForm(forms.ModelForm):
-
     class Meta:
         model = Post
         fields = ['title', 'body']

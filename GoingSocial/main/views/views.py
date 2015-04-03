@@ -2,7 +2,7 @@ from django.core import serializers
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.contrib.auth import  authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from main.models import MyUser, Post
 from main.forms import UserForm, MyUserForm, SignInForm, PostForm
@@ -27,14 +27,14 @@ def sign_in(request):
         if sign_in_form.is_valid():
             username = sign_in_form.cleaned_data["username"]
             password = sign_in_form.cleaned_data["password"]
-            user = authenticate(username = username, password = password)
+            user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect('/home/')
             else:
                 error = "Invalid username/password."
                 form = SignInForm(initial={'username': request.POST.get('username')})
-               # return HttpResponseRedirect('/sign_in/')
+                # return HttpResponseRedirect('/sign_in/')
     elif request.method == 'GET':
         sign_in_form = SignInForm()
     else:
@@ -48,7 +48,7 @@ def sign_out(request):
 
 
 def thanks(request):
-	return render(request, 'thanks.html',{})
+    return render(request, 'thanks.html', {})
 
 
 def sign_up(request):
@@ -66,12 +66,12 @@ def sign_up(request):
     else:
         user_form = UserForm()
         myuser_form = MyUserForm()
-    return render(request, 'main/sign_up.html', 
-        {'user_form': user_form, 'myuser_form': myuser_form})
+    return render(request, 'main/sign_up.html',
+                  {'user_form': user_form, 'myuser_form': myuser_form})
 
 
 def splash(request):
-	return render(request, 'main/splash.html', {})
+    return render(request, 'main/splash.html', {})
 
 
 def home(request):
@@ -81,8 +81,8 @@ def home(request):
 def dashboard(request):
     if request.user.is_authenticated():
         form = PostForm()
-        return render(request, 'main/dashboard.html', 
-            {'form': form, 'myuser': MyUser.objects.get(user=request.user)})
+        return render(request, 'main/dashboard.html',
+                      {'form': form, 'myuser': MyUser.objects.get(user=request.user)})
     else:
         return HttpResponseRedirect('/home/')
 
@@ -93,26 +93,26 @@ def about(request):
 
 def profile(request, id):
     if request.user.is_authenticated():
-        return render(request, "profile.html", 
-            {'logged_in_user': request.user.id, 
-            'profile_user': User.objects.get(id=id), 
-            'myuser': MyUser.objects.get(user=id), 'posts': Post.objects.all})
+        return render(request, "profile.html",
+                      {'logged_in_user': request.user.id,
+                       'profile_user': User.objects.get(id=id),
+                       'myuser': MyUser.objects.get(user=id), 'posts': Post.objects.all})
     else:
         return HttpResponseRedirect('/splash/')
 
 
 def profiles(request):
     if request.user.is_authenticated():
-        return render(request, "profiles.html", 
-            {'users': MyUser.objects.all})
+        return render(request, "profiles.html",
+                      {'users': MyUser.objects.all})
     else:
         return HttpResponseRedirect('/splash/')
 
 
 def blog(request):
     if request.user.is_authenticated():
-        return render(request, "blog.html", 
-            {'myuser': MyUser.objects.get(user=request.user.id)})
+        return render(request, "blog.html",
+                      {'myuser': MyUser.objects.get(user=request.user.id)})
     else:
         return HttpResponseRedirect('/splash/')
 

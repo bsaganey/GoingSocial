@@ -9,9 +9,9 @@ LEXERS = [item for item in get_all_lexers() if item[1]]
 
 class Post(models.Model):
     user = models.ForeignKey(MyUser)
-    username = models.CharField(max_length = 200)
-    title = models.CharField(max_length = 32)
-    body = models.TextField(max_length = 3000)
+    username = models.CharField(max_length=200)
+    title = models.CharField(max_length=32)
+    body = models.TextField(max_length=3000)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
