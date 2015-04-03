@@ -56,12 +56,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-		  <img src="../static/img/logo.png" style="height: 50px">
+		  <img src="../static/img/logo.png" style="height: 52px; position: absolute">
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
           
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav" style="margin-left: 90px">
 						<li>
 							<a href="\home">Home</a>
 						</li>
@@ -75,14 +75,20 @@
 						
 				
 				{% if user.is_authenticated %}
+				
 				<li>
-					<p style="color:grey; margin-top: 9px;">Welcome, {{ user.username }}. Thanks for logging in.</p>
+					<p style="color: #168db4; margin-top: 15px;">Welcome, {{ user.username }}. Thanks for logging in.</p>
+					
+				</li>
+				<li>
+					<a class="btn btn-default" href = '/sign_out/' style="margin-left: 20px"> Sign Out </a>
 				</li>
 				{% else %}
 				
 				<li style="margin-top: 9px">
 					<p> <a class="btn btn-primary" href = '/sign_up/'> Sign Up </a> <a class="btn btn-default" href = '/sign_in/'> Sign In </a></p>
 				</li>
+
 				{% endif %}
         </div><!--/.navbar-collapse -->
       </div>
