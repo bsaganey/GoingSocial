@@ -1,6 +1,8 @@
 django312
 =========
 
+[![Join the chat at https://gitter.im/bsaganey/GoingSocial](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bsaganey/GoingSocial?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a Django starter template with support for:
 
 * model directories
